@@ -15,7 +15,7 @@
 <label>Skills:</label>
 <input type="text" v-model="tempSkill" @keyup.alt="addSkill">
 <div v-for="skill in skills" :key="skill" class="pill">
-    {{ skill }}
+    <span @click="deleteSkill(skill)">{{ skill }}</span>
 </div>
 
 
@@ -32,27 +32,32 @@
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            email: 'mario',
-            password: '',
-            role: 'designer',
-            terms: false,
-            tempSkill: '',
-            skills: []
-        } 
-    },
-    methods: {
-        addSkill(e) {
-            if (e.key === ',' && this.tempSkill) {
-                if (!this.skills.includes(this.tempSkill)) {
-                    this.skills.push(this.tempSkill)
+    export default {
+        data() {
+            return {
+                email: 'mario',
+                password: '',
+                role: 'designer',
+                terms: false,
+                tempSkill: '',
+                skills: []
+            } 
+        },
+        methods: {
+            addSkill(e) {
+                if (e.key === ',' && this.tempSkill) {
+                    if (!this.skills.includes(this.tempSkill)) {
+                        this.skills.push(this.tempSkill)
+                    }
+                    this.tempSkill = ''
                 }
-                this.tempSkill = ''
+            },
+            deleteSkill(skill) {
+                this.skills = this.skills.filter((item) => {
+                    return skill !== item
+                })
             }
         }
-    }
 
 }
 </script>
