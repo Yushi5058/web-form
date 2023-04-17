@@ -23,6 +23,11 @@
 <input type="checkbox" required v-model="terms">
 <label>Accept terms and conditions</label>
 </div>
+
+
+<div class="submit">
+<button>Create an Account</button>
+</div>
   </form>
 
   <p>Email: {{ email }}</p>
@@ -107,5 +112,16 @@ letter-spacing: 1px;
 font-weight: bold;
 color: #777;
 cursor: pointer;
+}
+button {
+background: #0b6dff;
+border: 0;
+padding: 10px 20px;
+margin-top: 20px;
+color: white;
+border-radius: 20px;
+}
+.submit {
+text-align: center;
 }
 </style>
