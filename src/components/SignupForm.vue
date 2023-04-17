@@ -1,9 +1,10 @@
 <template>
-  <form>
+  <form @submit.prevent="handleSubmit">
 <label>Email:</label>
 <input type="email" required v-model="email">
 <label>Password:</label>
 <input type="password" required v-model="password">
+<div v-if="passwordError" class="error"> {{ passwordError }}</div>
 
 
 <label>Role</label>
@@ -45,7 +46,8 @@
                 role: 'designer',
                 terms: false,
                 tempSkill: '',
-                skills: []
+                skills: [],
+                passwordError: ''
             } 
         },
         methods: {
@@ -61,6 +63,12 @@
                 this.skills = this.skills.filter((item) => {
                     return skill !== item
                 })
+            },
+            handleSubmit() {
+                // validate password
+                this.passwordError = this.password.length > 5 ? 
+                    '' : 'Password must be at least 6 chars long'
+
             }
         }
 
@@ -123,5 +131,11 @@ border-radius: 20px;
 }
 .submit {
 text-align: center;
+}
+.error {
+color: #ff0062;
+margin-top: 10px;
+font-size: 0.8em;
+font-weight: bold;
 }
 </style>
