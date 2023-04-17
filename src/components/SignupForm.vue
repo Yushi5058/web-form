@@ -14,7 +14,7 @@
 
 
 <div class="terms">
-<input type="checkboxes" required>
+<input type="checkbox" required>
 <label>Accept terms and conditions</label>
 </div>
   </form>
